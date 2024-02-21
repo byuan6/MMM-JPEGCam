@@ -29,7 +29,7 @@ Module.register("MMM-JPEGCam",{
 
 
     socketNotificationReceived: function(notification, payload) {
-        Log.log('MMM-MjpegFeed: socketNotificationReceived ' + notification);
+        Log.log('MMM-JPEGCam: socketNotificationReceived ' + notification);
         Log.log(payload);
         if (notification === 'MJPEG_FEED_URL') {
             this.imgsrc=payload;
@@ -38,8 +38,9 @@ Module.register("MMM-JPEGCam",{
             //this.img.style.width = "100%";
             const len = Math.min(this.img.length,payload.length);
             for(var i=0; i<len; i++) {
-              this.img[i].src = payload[i];
-              this.img[i].parentNode.parentNode.parentNode.style.display='block';
+                if(this.img[i].src != payload[i])
+                    this.img[i].src = payload[i];
+                this.img[i].parentNode.parentNode.parentNode.style.display='block';
             }
         } else if(notification === 'MJPEG_FEED_STOP') {
             const len = this.img.length;

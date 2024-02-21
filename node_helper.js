@@ -58,6 +58,9 @@ module.exports = NodeHelper.create({
 
         var url=this.config.rotatingURL[(this.current) % urlcount];
         // var url=this.config.rotatingURL[this.current];
+        if(url.indexOf("&isappend")!=-1) {
+          url = url.replace("&isappend","&" + (new Date()).getTime());
+        }
         if(this.config.isappend)
           url+="&" + (new Date()).getTime();
         if(url.startsWith("@")) {
@@ -79,7 +82,7 @@ module.exports = NodeHelper.create({
                 const src = "data:"+mime+";base64,"+encoded;
                 results[i] = src;
                 console.log(this.name + "... saving to MJPEG_FEED_URL " + src );
-                if(results.every((s) => s !=null)) {
+                if(results.every((s) => s !=null) && !this.isSentSame(results)) {
                   console.log(this.name + "... sending MJPEG_FEED_URL ");
                   console.log(results);
                   self.sendSocketNotification('MJPEG_FEED_URL',results);
@@ -105,7 +108,7 @@ module.exports = NodeHelper.create({
                 const src = "data:"+mime+";base64,"+encoded;
                 results[i] = src;
                 console.log(this.name + "... saving to MJPEG_FEED_URL " + src );
-                if(results.every((s) => s !=null)) {
+                if(results.every((s) => s !=null) && !this.isSentSame(results)) {
                   console.log(this.name + "... sending MJPEG_FEED_URL ");
                   console.log(results);
                   self.sendSocketNotification('MJPEG_FEED_URL',results);
@@ -126,7 +129,7 @@ module.exports = NodeHelper.create({
             console.log(this.name + "... saving to MJPEG_FEED_URL " + url );
 
             results[i] = url;
-            if(results.every((s) => s !=null)) {
+            if(results.every((s) => s !=null) && !this.isSentSame(results)) {
               console.log(this.name + "... sending MJPEG_FEED_URL " );
               console.log(results);
               self.sendSocketNotification('MJPEG_FEED_URL',results);
@@ -144,6 +147,21 @@ module.exports = NodeHelper.create({
 
     var url = this.url;
     this.sendSocketNotification('MJPEG_FEED_STOP', url);
+  },
+
+  isSentSame: function(updated) {
+    if (!this.sent || updated.length==this.sent.length) {
+      this.sent = updated;
+      return false;
+    }
+    const sent=this.sent;
+    this.sent = updated;
+    const len = updated.length;
+    for(var i=0; i<len; i++)
+      if(updated[i]!=sent[i])
+        return false;
+
+    return true;
   },
 
 });
