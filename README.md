@@ -41,8 +41,8 @@ Required is to add a url.
             width: "360px",
             rotationInterval: 1*1000, // 1sec
             rotatingURL: [
-                'http://10.0.0.204:8080/cgi-bin/<still image URL>&isappend',
-                'http://10.0.0.202:8080/cgi-bin/<mjpeg url>',
+                'http://192.168.1.3:8080/cgi-bin/<still image URL>&isappend',
+                'http://192.168.1.4:8080/cgi-bin/<mjpeg url>',
             ],
             visiblecount: 1,
             isappend: false
@@ -60,7 +60,7 @@ Restart the MagicMirror application.
 | height <br> `250` | Height of Map |
 | isappend <br> false | If true, always appends date to end of below url to IP camera |
 | rotationInterval <br> '1000' | In millisec, so default is 1sec.  The images will rotate every 1sec, which gives the still images a illusion of a video  |
-| rotatingURL <br> (required) | ['***<URL1>***','***<URL2>***'] <br> At least 1 URL is required.  Each URL is to a different IP camera.  Each camera type has a specific URL for it's manufacturer and make.  If using still image URL, you should append '&isappend' to end of url, to create the illusion of motion )  |
+| rotatingURL <br> (required) | [URL1, URL2] <br> At least 1 URL is required.  Each URL is to a different IP camera.  Each camera type has a specific URL for it's manufacturer and make.  If using still image URL, you should append '&isappend' to end of url, to create the illusion of motion )  |
 | visiblecount <br> `1` | How many video windows to show at once.  If fewer than number of URL in rotationURL array, then the rotationInterval (above) should be used as the interval which to change images, in limited windows |
 
 # Details
