@@ -1,0 +1,16 @@
+{
+  "name": "MMM-MjpegFeed",
+  "description": "A Widget that accesses a jpg or mjpeg and places it in img tag",
+  "keywords": [
+    "mirror",
+    "smart mirror",
+    "mirror jpeg",
+    "mirror mjpeg"
+  ],
+  "version": "0.0.1",
+  "dependencies": {
+    "http": "latest",
+    "https": "latest",
+    "base-64": "latest"
+  }
+}
