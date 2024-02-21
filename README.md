@@ -60,7 +60,7 @@ Restart the MagicMirror application.
 | height <br> `250` | Height of Map |
 | isappend <br> false | If true, always appends date to end of below url to IP camera |
 | rotationInterval <br> '1000' | In millisec, so default is 1sec.  The images will rotate every 1sec, which gives the still images a illusion of a video  |
-| rotatingURL <br> (required) | ['<URL1>','<URL2>'] <br> At least 1 URL is required.  Each URL is to a different IP camera.  Each camera type has a specific URL for it's manufacturer and make.  If using still image URL, you should append '&isappend' to end of url, to create the illusion of motion )  |
+| rotatingURL <br> (required) | ['***<URL1>***','***<URL2>***'] <br> At least 1 URL is required.  Each URL is to a different IP camera.  Each camera type has a specific URL for it's manufacturer and make.  If using still image URL, you should append '&isappend' to end of url, to create the illusion of motion )  |
 | visiblecount <br> `1` | How many video windows to show at once.  If fewer than number of URL in rotationURL array, then the rotationInterval (above) should be used as the interval which to change images, in limited windows |
 
 # Details
