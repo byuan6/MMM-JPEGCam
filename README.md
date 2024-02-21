@@ -65,4 +65,9 @@ Restart the MagicMirror application.
 
 # Details
 
+The module creates img tags for count specified in visiblecount.  Then it sends a list of url of exactly that many items, to be displayed, starting at the top list in rotatingURL.  And refreshing every rotationInterval, at where it left off.
+
+MJPEG URL are videos by their very nature and do not need to be refreshed.
+
+
 
